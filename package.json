@@ -1,0 +1,19 @@
+{
+  "name": "ganache-time-traveler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ejwessel/GanacheTimeTraveler.git"
+  },
+  "author": "ejwessel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejwessel/GanacheTimeTraveler/issues"
+  },
+  "homepage": "https://github.com/ejwessel/GanacheTimeTraveler#readme"
+}
