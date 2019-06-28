@@ -3,6 +3,8 @@
 * Use of code from https://medium.com/edgefund/time-travelling-truffle-tests-f581c1964687
 * Utility functions to advance blocktime and mine blocks artificially for EVM
 */
+var snapshotId;
+
 advanceTime = (time) => {
   return new Promise((resolve, reject) => {
     web3.currentProvider.send({
@@ -64,6 +66,15 @@ advanceTimeAndBlock = async (time) => {
   await advanceBlock()
   return Promise.resolve(web3.eth.getBlock('latest'))
 }
+
+beforeEach(async() => {
+    snapShot = await takeSnapshot();
+    snapshotId = snapShot['result'];
+});
+
+afterEach(async() => {
+    await revertToSnapShot(snapshotId);
+});
 
 module.exports = {
   advanceTime,
