@@ -48,16 +48,21 @@ helper.advanceTimeAndBlock(<seconds_to_advance_by>)
 ```
 
 ### take snapshot
-takes a snapshot of the block id and returns it
-```
+_Snapshot the state of the blockchain at the current block. Takes no parameters. Returns the integer id of the snapshot created._
+```javascript
 helper.takeSnapshot()
 ```
 
 ### revert to snapshot
-reverts to snapshot id
+_Revert the state of the blockchain to a previous snapshot. Takes a single parameter, which is the snapshot id to revert to._
+```javascript
+## Usage
+helper.revertToSnapShot(<id_to_revert_to>);
 ```
-helper.revertToSnapShot(snapshotId);
-```
+
+## Resources
+- https://github.com/trufflesuite/ganache-cli
+- https://www.trufflesuite.com
 
 
 example is here https://github.com/ejwessel/TimeContract
