@@ -32,12 +32,12 @@ afterEach(async() => {
 
 ## Breakdown of methods
 ### advancing time
-moves the time forward
+advances the time on the blockchain forward. Takes a single parameter, which is the number of seconds to advance by.
 ```javascript
 helper.advanceTime(<seconds_to_advance_by>)
 ```
 ### advancing block
-moves the block forward
+advances the block forward.
 ```javascript
 helper.advanceBlock()
 ```
@@ -63,6 +63,3 @@ helper.revertToSnapShot(<id_to_revert_to>);
 ## Resources
 - https://github.com/trufflesuite/ganache-cli
 - https://www.trufflesuite.com
-
-
-example is here https://github.com/ejwessel/TimeContract
