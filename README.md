@@ -33,7 +33,17 @@ afterEach(async() => {
 ## Other methods
 ### advancing time
 ```javascript
+helper.advanceTime(<seconds_to_advance_by>)
+```
+### advancing block
+```javascript
+helper.advanceBlock(<seconds_to_advance_by>)
+```
+### advanceTimeAndBlock
+combination of both `advanceTime` and `advanceBlock`
+```javascript
 helper.advanceTimeAndBlock(<seconds_to_advance_by>)
 ```
+
 
 example is here https://github.com/ejwessel/TimeContract
