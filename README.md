@@ -30,19 +30,33 @@ afterEach(async() => {
 });
  ```
 
-## Other methods
+## Breakdown of methods
 ### advancing time
+moves the time forward
 ```javascript
 helper.advanceTime(<seconds_to_advance_by>)
 ```
 ### advancing block
+moves the block forward
 ```javascript
 helper.advanceBlock()
 ```
-### advanceTimeAndBlock
+### advance time and block
 combination of both `advanceTime` and `advanceBlock`
 ```javascript
 helper.advanceTimeAndBlock(<seconds_to_advance_by>)
+```
+
+### take snapshot
+takes a snapshot of the block id and returns it
+```
+helper.takeSnapshot()
+```
+
+### revert to snapshot
+reverts to snapshot id
+```
+helper.revertToSnapShot(snapshotId);
 ```
 
 
