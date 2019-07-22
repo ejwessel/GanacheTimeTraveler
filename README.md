@@ -64,4 +64,4 @@ helper.revertToSnapShot(<id_to_revert_to>);
 - https://github.com/trufflesuite/ganache-cli
 - https://www.trufflesuite.com
 
-(Read my Medium Post)[https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9]
+[Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
