@@ -37,7 +37,7 @@ helper.advanceTime(<seconds_to_advance_by>)
 ```
 ### advancing block
 ```javascript
-helper.advanceBlock(<seconds_to_advance_by>)
+helper.advanceBlock()
 ```
 ### advanceTimeAndBlock
 combination of both `advanceTime` and `advanceBlock`
