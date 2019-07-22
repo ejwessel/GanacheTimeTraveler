@@ -1,19 +1,24 @@
 # ganache-time-traveler
-A testing toolset that allows developers to write unit test without time dependencies inherit to the blockchain. 
+A testing toolset that allows developers to write unit tests
+
+without time dependencies inherit to the blockchain. 
+
+## Dependencies
+- [ganache-cli](https://github.com/trufflesuite/ganache-cli)
+- [truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 
 ## Install
-1. Ensure that ganache-cli and truffle are installed
-2. Run the following command within your project:
-    `npm install ganache-time-traveler` 
+- `npm i ganache-time-traveler`
 
 ## Usage
+add `require` at the top of your tests
+```javascript
+const helper = require('ganache-time-traveler');
+```
 
-#### Reverting back time
-For tests that require a specific prior state you use the snapshot functions witin the beforeEach and afterEach hooks to revert back before the test was run in the blockchain. These are good for tests that require some set transations for the unit to process.
 
+add the `beforeEach` and `afterEach` hooks into your test file
  ```javascript
-    let snapshotId;
-
     beforeEach(async() => {
         let snapShot = await helper.takeSnapshot();
         snapshotId = snapShot['result'];
@@ -24,6 +29,9 @@ For tests that require a specific prior state you use the snapshot functions wit
     });
  ```
 
-#### Jumping forward in time
+## Other methods
+### advancing time
+helper.advanceTimeAndBlock(<seconds_to_advance_by>)
+
 
 example usage is here https://github.com/ejwessel/TimeContract
