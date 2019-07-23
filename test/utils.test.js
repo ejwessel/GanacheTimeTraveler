@@ -2,7 +2,7 @@ const helper = require('../utils.js');
 
 const SECONDS_IN_DAY = 86400;
 
-contract('TimeContract', async (accounts) =>  {
+contract('Test Utils', async () =>  {
 
     it("Test advanceTime", async() => {
         //capture before time
