@@ -1,6 +1,9 @@
 # ganache-time-traveler
 A testing toolset that allows developers to write unit tests for the ethereum blockchain.
 
+[Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
+
+
 NOTE:
 - this only works with ganache-cli
 - this only works locally
@@ -63,5 +66,3 @@ helper.revertToSnapShot(<id_to_revert_to>);
 ## Resources
 - https://github.com/trufflesuite/ganache-cli
 - https://www.trufflesuite.com
-
-[Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
