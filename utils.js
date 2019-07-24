@@ -45,7 +45,7 @@ takeSnapshot = () => {
   })
 }
 
-revertToSnapShot = (id) => {
+revertToSnapshot = (id) => {
   return new Promise((resolve, reject) => {
     web3.currentProvider.send({
       jsonrpc: '2.0',
@@ -70,5 +70,5 @@ module.exports = {
   advanceBlock,
   advanceTimeAndBlock,
   takeSnapshot,
-  revertToSnapShot
+  revertToSnapshot
 }

@@ -45,11 +45,11 @@ contract('Test Utils', async () =>  {
         //assert after time is later than before time by number of seconds
     })
 
-    it("Test takeSnapshot", async() => {
-        //capture id
-        //snapShot = await helper.takeSnapshot();
-        //snapshotId = snapShot['result'];
-        //assert there is an id
+    it("Test takeSnapShot", async() => {
+        const snapShot = await helper.takeSnapshot();
+        const snapShotId = snapShot['result']
+        
+        assert.exists(snapShotId, "Unable to produce snapshot")
     })
 
     it("Test revertToSnapShot", async() => {
