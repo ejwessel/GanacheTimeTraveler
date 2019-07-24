@@ -1,29 +1,18 @@
-const helper = require('../utils.js');
+const helper = require('../utils.js')
 
-const SECONDS_IN_DAY = 86400;
+const SECONDS_IN_DAY = 86400
 
 contract('Test Utils', async () =>  {
 
     it("Test advanceTime", async() => {
-        //capture before time
-       
-        /*
-        const currentBlock = await web3.eth.getBlock()
-        console.log(currentBlock)
+        const currentBlock = await web3.eth.getBlock('latest')
 
-        const output = await helper.advanceTime(SECONDS_IN_DAY);
-        console.log(output)
-        await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_mine", params: [], id: 0})
+        await helper.advanceTime(SECONDS_IN_DAY);
+        await helper.advanceBlock()
         
-        const advancedBlock = await web3.eth.getBlock(currentBlock.number)
-        console.log(advancedBlock)
+        const advancedBlock = await web3.eth.getBlock('latest')
+        console.log(currentBlock.timestamp, advancedBlock.timestamp)
         assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time was not advanced")
-        */
-
-        //await helper.advanceTime(SECONDS_IN_DAY)
-        //capture after time
-        //assert after time is later than before time by number of seconds
-        // await helper.advanceTime(SECONDS_IN_DAY)
     })
 
     it("Test advanceBlock", async() => {
@@ -46,9 +35,9 @@ contract('Test Utils', async () =>  {
     })
 
     it("Test takeSnapShot", async() => {
-        const snapShot = await helper.takeSnapshot();
+        const snapShot = await helper.takeSnapshot()
         const snapShotId = snapShot['result']
-        
+
         assert.exists(snapShotId, "Unable to produce snapshot")
     })
 
