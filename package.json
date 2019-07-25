@@ -5,6 +5,7 @@
   "main": "utils.js",
   "scripts": {
     "test": "truffle test"
+    "ganache": "ganache-cli -d"
   },
   "repository": {
     "type": "git",
