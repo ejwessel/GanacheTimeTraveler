@@ -4,16 +4,6 @@ const SECONDS_IN_DAY = 86400
 
 contract('Test Utils', async () =>  {
 
-    it("Test advanceTime", async() => {
-        const currentBlock = await web3.eth.getBlock('latest')
-
-        await helper.advanceTime(SECONDS_IN_DAY);
-        await helper.advanceBlock()
-        
-        const advancedBlock = await web3.eth.getBlock('latest')
-        assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time was not advanced")
-    })
-
     it("Test advanceBlock", async() => {
         const currentBlock = await web3.eth.getBlock('latest')
         const currentBlockNum = currentBlock.number
@@ -26,25 +16,44 @@ contract('Test Utils', async () =>  {
         assert.equal(currentBlockNum + 1, advanceBlockNum, "New block was not mined")
     })
 
+    it("Test advanceTime", async() => {
+        const currentBlock = await web3.eth.getBlock('latest')
+
+        await helper.advanceTime(SECONDS_IN_DAY);
+        await helper.advanceBlock()
+        
+        const advancedBlock = await web3.eth.getBlock('latest')
+        assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time was not advanced")
+    })
+
     it("Test advanceTimeAndBlock", async() => {
-        //capture before time
-        //await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
-        //capture after time
-        //assert after time is later than before time by number of seconds
+        const currentBlock = await web3.eth.getBlock('latest')
+        await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
+
+        const advancedBlock = await web3.eth.getBlock('latest')
+        assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time and Block was not advanced")
     })
 
     it("Test takeSnapShot", async() => {
         const snapShot = await helper.takeSnapshot()
-        const snapShotId = snapShot['result']
+        const snapShotId = snapShot.result
 
         assert.exists(snapShotId, "Unable to produce snapshot")
     })
 
     it("Test revertToSnapShot", async() => {
-        //id = await helper.takeSnapshot()
-        //move time forward
-        //assert time moved
-        //await helper.revertToSnapshot(id)
-        //assert time reverted
+        const snapShot = await helper.takeSnapshot()
+        const snapShotId = snapShot.result
+
+        const currentBlock = await web3.eth.getBlock('latest')
+
+        await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
+        const advancedBlock = await web3.eth.getBlock('latest')
+        assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time was not advanced")
+
+        await helper.revertToSnapShot(snapShotId);
+        const revertedBlock = await web3.eth.getBlock('latest')
+
+        assert.equal(currentBlock.timestamp, revertedBlock.timestamp, "Time and block has been reverted")
     })
 });
