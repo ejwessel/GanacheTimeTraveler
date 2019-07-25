@@ -37,7 +37,6 @@ contract('Test Utils', async () =>  {
     it("Test takeSnapShot", async() => {
         const snapShot = await helper.takeSnapshot()
         const snapShotId = snapShot.result
-
         assert.exists(snapShotId, "Unable to produce snapshot")
     })
 
