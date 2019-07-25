@@ -3,6 +3,8 @@ A testing toolset that allows developers to write unit tests for the ethereum bl
 
 [Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
 
+[Watch my Presentation](https://photos.app.goo.gl/6qkd5AN2BthxkY2K6)
+
 
 NOTE:
 - this only works with ganache-cli
