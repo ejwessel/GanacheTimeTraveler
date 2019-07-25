@@ -41,10 +41,12 @@ contract('Test Utils', async () =>  {
     })
 
     it("Test revertToSnapShot", async() => {
+        // initial data captured
         const snapShot = await helper.takeSnapshot()
         const snapShotId = snapShot.result
         const currentBlock = await web3.eth.getBlock('latest')
 
+        // time advanced to simulated that other transactions occured over a day
         await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
         const advancedBlock = await web3.eth.getBlock('latest')
         assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time was not advanced")
