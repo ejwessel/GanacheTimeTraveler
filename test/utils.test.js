@@ -20,7 +20,7 @@ contract('Test Utils', async () =>  {
         const currentBlock = await web3.eth.getBlock('latest')
 
         await helper.advanceTime(SECONDS_IN_DAY);
-        await helper.advanceBlock()
+        await helper.advanceBlock() // advanced time does not show unless block has been mined and shown in new block
         
         const advancedBlock = await web3.eth.getBlock('latest')
         assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time was not advanced")
@@ -44,7 +44,6 @@ contract('Test Utils', async () =>  {
     it("Test revertToSnapShot", async() => {
         const snapShot = await helper.takeSnapshot()
         const snapShotId = snapShot.result
-
         const currentBlock = await web3.eth.getBlock('latest')
 
         await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
