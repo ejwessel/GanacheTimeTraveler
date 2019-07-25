@@ -34,16 +34,16 @@ contract('Test Utils', async () =>  {
         assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time and Block was not advanced")
     })
 
-    it("Test takeSnapShot", async() => {
-        const snapShot = await helper.takeSnapshot()
-        const snapShotId = snapShot.result
-        assert.exists(snapShotId, "Unable to produce snapshot")
+    it("Test takeSnapshot", async() => {
+        const snapshot = await helper.takeSnapshot()
+        const snapshotId = snapshot.result
+        assert.exists(snapshotId, "Unable to produce snapshot")
     })
 
     it("Test revertToSnapShot", async() => {
         // initial data captured
-        const snapShot = await helper.takeSnapshot()
-        const snapShotId = snapShot.result
+        const snapshot = await helper.takeSnapshot()
+        const snapshotId = snapshot.result
         const currentBlock = await web3.eth.getBlock('latest')
 
         // time advanced to simulated that other transactions occured over a day
@@ -51,7 +51,7 @@ contract('Test Utils', async () =>  {
         const advancedBlock = await web3.eth.getBlock('latest')
         assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time was not advanced")
 
-        await helper.revertToSnapShot(snapShotId);
+        await helper.revertToSnapShot(snapshotId);
         const revertedBlock = await web3.eth.getBlock('latest')
 
         assert.equal(currentBlock.timestamp, revertedBlock.timestamp, "Time and block has been reverted")
