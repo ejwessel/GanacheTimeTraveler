@@ -11,7 +11,6 @@ contract('Test Utils', async () =>  {
         await helper.advanceBlock()
         
         const advancedBlock = await web3.eth.getBlock('latest')
-        console.log(currentBlock.timestamp, advancedBlock.timestamp)
         assert.isBelow(currentBlock.timestamp, advancedBlock.timestamp, "Time was not advanced")
     })
 
