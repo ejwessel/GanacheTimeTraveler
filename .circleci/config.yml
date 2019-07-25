@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/node:8.16.0-jessie
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: yarn
+      - run:
+          name: Test
+          command: ganache-cli -d > /dev/null & sleep 10 && yarn test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test
