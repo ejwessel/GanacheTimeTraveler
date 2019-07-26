@@ -1,6 +1,6 @@
 {
   "name": "ganache-time-traveler",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "utils.js",
   "scripts": {
@@ -20,5 +20,12 @@
   "dependencies": {
     "ganache-cli": "^6.5.0",
     "truffle": "5.0.28"
-  }
+  },
+  "keywords": [
+      "ethereum",
+      "solidity",
+      "testing",
+      "truffle",
+      "ganache"
+  ]
 }
