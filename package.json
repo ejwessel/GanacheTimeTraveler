@@ -17,7 +17,7 @@
     "url": "https://github.com/ejwessel/GanacheTimeTraveler/issues"
   },
   "homepage": "https://github.com/ejwessel/GanacheTimeTraveler#readme",
-  "dependencies": {
+  "devDependencies": {
     "ganache-cli": "^6.5.0",
     "truffle": "5.0.28"
   },
