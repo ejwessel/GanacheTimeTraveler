@@ -61,7 +61,6 @@ helper.takeSnapshot()
 ### revert to snapshot
 _Revert the state of the blockchain to a previous snapshot. Takes a single parameter, which is the snapshot id to revert to._
 ```javascript
-## Usage
 helper.revertToSnapShot(<id_to_revert_to>);
 ```
 
