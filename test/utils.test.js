@@ -36,7 +36,8 @@ contract('Test Utils', async () =>  {
     it("Test advanceBlockAtTime", async() => {
         const blockBefore = await web3.eth.getBlock('latest')
         const timeBefore = blockBefore.timestamp
-
+        
+        //need to include time prior when using advanceBlockAtTime
         await helper.advanceBlockAtTime(timeBefore + SECONDS_IN_DAY);
         
         const blockAfter = await web3.eth.getBlock('latest')
