@@ -29,6 +29,17 @@ contract('Test Utils', async () =>  {
         assert.isBelow(timeBefore, timeAfter, "Time was not advanced")
     })
 
+    it("Test advanceBlockAtTime", async() => {
+        const blockBefore = await web3.eth.getBlock('latest')
+        const timeBefore = blockBefore.timestamp
+
+        await helper.advanceBlockAtTime(timeBefore + SECONDS_IN_DAY);
+        
+        const blockAfter = await web3.eth.getBlock('latest')
+        const timeAfter = blockAfter.timestamp
+        assert.isBelow(timeBefore, timeAfter, "Time was not advanced")
+    })
+
     it("Test takeSnapshot", async() => {
         const snapshot = await helper.takeSnapshot()
         const snapshotId = snapshot.result
@@ -41,11 +52,13 @@ contract('Test Utils', async () =>  {
         const snapshotId = snapshot.result
         const blockBefore = await web3.eth.getBlock('latest')
         const timeBefore = blockBefore.timestamp
+        console.log(timeBefore)
 
         // advance time forward
-        await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
+        await helper.advanceBlockAtTime(timeBefore + SECONDS_IN_DAY)
         const blockAfter = await web3.eth.getBlock('latest')
         const timeAfter = blockAfter.timestamp
+        console.log(timeAfter)
         assert.isBelow(timeBefore, timeAfter, "Time did not advance")
 
         await helper.revertToSnapshot(snapshotId)
