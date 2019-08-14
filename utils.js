@@ -32,12 +32,6 @@ advanceBlock = () => {
   })
 }
 
-advanceTimeAndBlock = async (time) => {
-    await advanceTime(time)
-    await advanceBlock()
-    return Promise.resolve(web3.eth.getBlock('latest'))
-}
-
 takeSnapshot = () => {
   return new Promise((resolve, reject) => {
     web3.currentProvider.send({

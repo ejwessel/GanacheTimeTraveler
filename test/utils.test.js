@@ -29,17 +29,6 @@ contract('Test Utils', async () =>  {
         assert.isBelow(timeBefore, timeAfter, "Time was not advanced")
     })
 
-    it("Test advanceTimeAndBlock", async() => {
-        const blockBefore = await web3.eth.getBlock('latest')
-        const timeBefore = blockBefore.timestamp
-
-        await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
-
-        const blockAfter = await web3.eth.getBlock('latest')
-        const timeAfter = blockAfter.timestamp
-        assert.isBelow(timeBefore, timeAfter, "Time and Block was not advanced")
-    })
-
     it("Test takeSnapshot", async() => {
         const snapshot = await helper.takeSnapshot()
         const snapshotId = snapshot.result
