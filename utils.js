@@ -70,5 +70,5 @@ module.exports = {
   advanceBlock,
   advanceTimeAndBlock,
   takeSnapshot,
-  revertToSnapShot
+  revertToSnapshot
 }

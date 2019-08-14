@@ -46,7 +46,7 @@ contract('Test Utils', async () =>  {
         assert.exists(snapshotId, "Unable to produce snapshot")
     })
 
-    it("Test revertToSnapShot", async() => {
+    it("Test revertToSnapshot", async() => {
         // grab block before advancing time
         const snapshot = await helper.takeSnapshot()
         const snapshotId = snapshot.result
@@ -59,7 +59,7 @@ contract('Test Utils', async () =>  {
         const timeAfter = blockAfter.timestamp
         assert.isBelow(timeBefore, timeAfter, "Time did not advance")
 
-        await helper.revertToSnapShot(snapshotId)
+        await helper.revertToSnapshot(snapshotId)
 
         //grab block after reverting time
         const blockReverted = await web3.eth.getBlock('latest')
