@@ -32,12 +32,33 @@ advanceBlock = () => {
   })
 }
 
-advanceBlockAtTime = (time) => {
+advanceBlockAndSetTime = (time) => {
     return new Promise((resolve, reject) => {
         web3.currentProvider.send({
             jsonrpc: '2.0',
             method: 'evm_mine',
             params: [time],
+            id: new Date().getTime()
+        }, (err, result) => {
+            if (err) { return reject(err) }
+            const newBlockHash = web3.eth.getBlock('latest').hash
+    
+            return resolve(newBlockHash)
+        })
+    })
+}
+
+advanceTimeAndBlock = async (time) => {
+    //capture current time
+    let blockNum = await web3.eth.getBlockNumber()
+    let block = await web3.eth.getBlock(blockNum)
+    let forwardTime = parseInt(block['timestamp']) + time
+
+    return new Promise((resolve, reject) => {
+        web3.currentProvider.send({
+            jsonrpc: '2.0',
+            method: 'evm_mine',
+            params: [forwardTime],
             id: new Date().getTime()
         }, (err, result) => {
             if (err) { return reject(err) }
@@ -78,7 +99,8 @@ revertToSnapshot = (id) => {
 module.exports = {
   advanceTime,
   advanceBlock,
-  advanceBlockAtTime,
+  advanceBlockAndSetTime,
+  advanceTimeAndBlock,
   takeSnapshot,
   revertToSnapshot
 }

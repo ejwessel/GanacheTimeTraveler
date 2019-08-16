@@ -33,16 +33,33 @@ contract('Test Utils', async () =>  {
         assert.isBelow(timeBefore, timeAfter, "Time was not advanced")
     })
 
-    it("Test advanceBlockAtTime", async() => {
+    it("Test advanceBlockAndSetTime", async() => {
         const blockBefore = await web3.eth.getBlock('latest')
+        const blockNumberBefore = blockBefore.number
         const timeBefore = blockBefore.timestamp
         
-        //need to include time prior when using advanceBlockAtTime
-        await helper.advanceBlockAtTime(timeBefore + SECONDS_IN_DAY);
+        //need to include time prior when using advanceBlockAndSetTime
+        await helper.advanceBlockAndSetTime(timeBefore - SECONDS_IN_DAY);
         
         const blockAfter = await web3.eth.getBlock('latest')
+        const blockNumberAfter = blockAfter.number
         const timeAfter = blockAfter.timestamp
-        assert.isBelow(timeBefore, timeAfter, "Time was not advanced")
+        assert.isBelow(timeAfter, timeBefore, "Time was not set back")
+        assert.isBelow(blockNumberBefore, blockNumberAfter, "Block was not advanced")
+    })
+
+    it("Test advanceTimeAndBlock", async() => {
+        const blockBefore = await web3.eth.getBlock('latest') 
+        const blockNumberBefore = blockBefore.number
+        const timeBefore = blockBefore.timestamp
+
+        await helper.advanceTimeAndBlock(SECONDS_IN_DAY);
+        
+        const blockAfter = await web3.eth.getBlock('latest')
+        const blockNumberAfter = blockAfter.number
+        const timeAfter = blockAfter.timestamp
+        assert.isBelow(timeBefore, timeAfter, "Time and Block were not advanced")
+        assert.isBelow(blockNumberBefore, blockNumberAfter, "Block was not advanced")
     })
 
     it("Test takeSnapshot", async() => {
@@ -59,7 +76,7 @@ contract('Test Utils', async () =>  {
         const timeBefore = blockBefore.timestamp
 
         // advance time forward
-        await helper.advanceBlockAtTime(timeBefore + SECONDS_IN_DAY)
+        await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
         const blockAfter = await web3.eth.getBlock('latest')
         const timeAfter = blockAfter.timestamp
         assert.isBelow(timeBefore, timeAfter, "Time did not advance")
