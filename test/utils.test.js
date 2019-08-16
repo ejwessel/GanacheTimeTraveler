@@ -38,7 +38,7 @@ contract('Test Utils', async () =>  {
         const blockNumberBefore = blockBefore.number
         const timeBefore = blockBefore.timestamp
         
-        //need to include time prior when using advanceBlockAndSetTime
+        // move time backwards
         await helper.advanceBlockAndSetTime(timeBefore - SECONDS_IN_DAY);
         
         const blockAfter = await web3.eth.getBlock('latest')
