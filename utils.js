@@ -52,20 +52,17 @@ advanceTimeAndBlock = async (time) => {
     //capture current time
     let blockNum = await web3.eth.getBlockNumber()
     let block = await web3.eth.getBlock(blockNum)
-    let forwardTime = parseInt(block['timestamp']) + time
+    let forwardTime = block['timestamp'] + time
 
-    return new Promise((resolve, reject) => {
-        web3.currentProvider.send({
-            jsonrpc: '2.0',
-            method: 'evm_mine',
-            params: [forwardTime],
-            id: new Date().getTime()
-        }, (err, result) => {
-            if (err) { return reject(err) }
-            const newBlockHash = web3.eth.getBlock('latest').hash
-    
-            return resolve(newBlockHash)
-        })
+    await web3.currentProvider.send({
+        jsonrpc: '2.0',
+        method: 'evm_mine',
+        params: [forwardTime],
+        id: new Date().getTime()
+    }, (err, result) => {
+        if (err) { return err }
+        const newBlockHash = web3.eth.getBlock('latest').hash
+        return newBlockHash
     })
 }
 
