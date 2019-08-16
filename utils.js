@@ -50,8 +50,7 @@ advanceBlockAndSetTime = (time) => {
 
 advanceTimeAndBlock = async (time) => {
     //capture current time
-    let blockNum = await web3.eth.getBlockNumber()
-    let block = await web3.eth.getBlock(blockNum)
+    let block = await web3.eth.getBlock('latest')
     let forwardTime = block['timestamp'] + time
 
     await web3.currentProvider.send({
@@ -59,7 +58,7 @@ advanceTimeAndBlock = async (time) => {
         method: 'evm_mine',
         params: [forwardTime],
         id: new Date().getTime()
-    }, (err, result) => {
+    }, (err) => {
         if (err) { return err }
         const newBlockHash = web3.eth.getBlock('latest').hash
         return newBlockHash
