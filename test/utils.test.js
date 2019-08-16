@@ -18,6 +18,7 @@ contract('Test Utils', async () =>  {
 
     it("Test advanceTime", async() => {
         const blockBefore = await web3.eth.getBlock('latest')
+        const blockNumberBefore = blockBefore.number
         const timeBefore = blockBefore.timestamp
 
         await helper.advanceTime(SECONDS_IN_DAY);
@@ -25,19 +26,40 @@ contract('Test Utils', async () =>  {
         await helper.advanceBlock()
         
         const blockAfter = await web3.eth.getBlock('latest')
+        const blockNumberAfter = blockAfter.number
+        assert.equal(blockNumberBefore + 1, blockNumberAfter, "New block was not mined")
+
         const timeAfter = blockAfter.timestamp
         assert.isBelow(timeBefore, timeAfter, "Time was not advanced")
     })
 
-    it("Test advanceTimeAndBlock", async() => {
+    it("Test advanceBlockAndSetTime", async() => {
         const blockBefore = await web3.eth.getBlock('latest')
+        const blockNumberBefore = blockBefore.number
+        const timeBefore = blockBefore.timestamp
+        
+        // move time backwards
+        await helper.advanceBlockAndSetTime(timeBefore - SECONDS_IN_DAY);
+        
+        const blockAfter = await web3.eth.getBlock('latest')
+        const blockNumberAfter = blockAfter.number
+        const timeAfter = blockAfter.timestamp
+        assert.isBelow(timeAfter, timeBefore, "Time was not set back")
+        assert.isBelow(blockNumberBefore, blockNumberAfter, "Block was not advanced")
+    })
+
+    it("Test advanceTimeAndBlock", async() => {
+        const blockBefore = await web3.eth.getBlock('latest') 
+        const blockNumberBefore = blockBefore.number
         const timeBefore = blockBefore.timestamp
 
-        await helper.advanceTimeAndBlock(SECONDS_IN_DAY)
-
+        await helper.advanceTimeAndBlock(SECONDS_IN_DAY);
+        
         const blockAfter = await web3.eth.getBlock('latest')
+        const blockNumberAfter = blockAfter.number
         const timeAfter = blockAfter.timestamp
-        assert.isBelow(timeBefore, timeAfter, "Time and Block was not advanced")
+        assert.isBelow(timeBefore, timeAfter, "Time and Block were not advanced")
+        assert.isBelow(blockNumberBefore, blockNumberAfter, "Block was not advanced")
     })
 
     it("Test takeSnapshot", async() => {
@@ -46,7 +68,7 @@ contract('Test Utils', async () =>  {
         assert.exists(snapshotId, "Unable to produce snapshot")
     })
 
-    it("Test revertToSnapShot", async() => {
+    it("Test revertToSnapshot", async() => {
         // grab block before advancing time
         const snapshot = await helper.takeSnapshot()
         const snapshotId = snapshot.result
@@ -59,7 +81,7 @@ contract('Test Utils', async () =>  {
         const timeAfter = blockAfter.timestamp
         assert.isBelow(timeBefore, timeAfter, "Time did not advance")
 
-        await helper.revertToSnapShot(snapshotId)
+        await helper.revertToSnapshot(snapshotId)
 
         //grab block after reverting time
         const blockReverted = await web3.eth.getBlock('latest')
