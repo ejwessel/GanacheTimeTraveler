@@ -38,7 +38,7 @@ afterEach(async() => {
 ## Breakdown of methods
 ### advancing time
 advances the time on the blockchain forward. Takes a single parameter, which is the number of seconds to advance by.
-Note: for the advance in time to take effect, the block must also be moved forward. See `advanceTimeAndBlock` to do both. 
+Note: for the advance in time to take effect, the block must also be mined (`advanceBlock()`. See `advanceTimeAndBlock()` to do both. 
 ```javascript
 helper.advanceTime(<seconds_to_advance_by>)
 ```
