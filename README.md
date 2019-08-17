@@ -43,12 +43,12 @@ Note: for the advance in time to take effect, the block must also be mined using
 helper.advanceTime(<seconds_to_advance_by>)
 ```
 ### advancing block
-advances the block forward by 1.
+mines a new block; advances the block forward by 1.
 ```javascript
 helper.advanceBlock()
 ```
 ### advance block and set time
-advances the block by 1 and **sets** the time to a new time.
+advances the block forward by 1 and **sets** the time to a new time.
 ```javascript
 helper.advanceBlockAndSetTime(<new_time>)
 ```
