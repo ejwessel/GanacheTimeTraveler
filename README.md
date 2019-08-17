@@ -33,7 +33,7 @@ beforeEach(async() => {
 });
 
 afterEach(async() => {
-    await helper.revertToSnapShot(snapshotId);
+    await helper.revertToSnapshot(snapshotId);
 });
  ```
 
@@ -54,7 +54,7 @@ Advances the block by 1 in addition to advancing the time on the blockchain forw
 ### `takeSnapshot()`
 Snapshot the state of the blockchain at the current block. Takes no parameters. Returns the integer id of the snapshot created.
 
-### `revertToSnapShot(<id_to_revert_to>)`
+### `revertToSnapshot(<id_to_revert_to>)`
 Revert the state of the blockchain to a previous snapshot. Takes a single parameter, which is the snapshot id to revert to.
 
 ## Resources
