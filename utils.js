@@ -23,7 +23,7 @@ advanceBlock = () => {
       jsonrpc: '2.0',
       method: 'evm_mine',
       id: new Date().getTime()
-    }, (err, result) => {
+    }, (err) => {
       if (err) { return reject(err) }
       const newBlockHash = web3.eth.getBlock('latest').hash
 
@@ -39,7 +39,7 @@ advanceBlockAndSetTime = (time) => {
             method: 'evm_mine',
             params: [time],
             id: new Date().getTime()
-        }, (err, result) => {
+        }, (err) => {
             if (err) { return reject(err) }
             const newBlockHash = web3.eth.getBlock('latest').hash
     
