@@ -1,16 +1,18 @@
 # ganache-time-traveler
-A testing toolset that allows developers to write unit tests for the ethereum blockchain.
+A testing toolset that allows developers to write unit tests for the Ethereum blockchain.
 
 [Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
 
 [Watch my Presentation](https://photos.app.goo.gl/6qkd5AN2BthxkY2K6)
+
+[Time Contract Example](https://github.com/ejwessel/TimeContract)
 
 
 NOTE:
 - this only works with ganache-cli
 - this only works locally
 
-## Dependencies
+## Tool Dependencies
 - [ganache-cli](https://github.com/trufflesuite/ganache-cli)
 - [truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 
@@ -36,37 +38,25 @@ afterEach(async() => {
  ```
 
 ## Breakdown of methods
-### advancing time
+### `advanceTime(<seconds_to_advance_by>)`
 _Advances the time on the blockchain forward. Takes a single parameter, which is the number of seconds to advance by.
 Note: for advancetime() to take effect, the block must also be mined using `advanceBlock()`. See `advanceTimeAndBlock()` to do both._
-```javascript
-helper.advanceTime(<seconds_to_advance_by>)
-```
-### advancing block
+
+### `advanceBlock()`
 _Mines a new block; advances the block forward by 1 block._
-```javascript
-helper.advanceBlock()
-```
-### advance block and set time
+
+### `advanceBlockAndSetTime(<new_time>)`
 _Advances the block forward by 1 and **sets** the time to a new time._
-```javascript
-helper.advanceBlockAndSetTime(<new_time>)
-```
-### advance time and block
+
+### `advanceTimeAndBlock(<seconds_to_advance_by>)`
 _Advances the block by 1 in addition to advancing the time on the blockchain forward. Takes a single parameter, which is the number of seconds to advance by._
-```javascript
-helper.advanceTimeAndBlock(<seconds_to_advance_by>)
-```
-### take snapshot
+
+### `takeSnapshot()`
 _Snapshot the state of the blockchain at the current block. Takes no parameters. Returns the integer id of the snapshot created._
-```javascript
-helper.takeSnapshot()
-```
-### revert to snapshot
+
+### `revertToSnapShot(<id_to_revert_to>)`
 _Revert the state of the blockchain to a previous snapshot. Takes a single parameter, which is the snapshot id to revert to._
-```javascript
-helper.revertToSnapShot(<id_to_revert_to>);
-```
+
 ## Resources
 - https://github.com/trufflesuite/ganache-cli
 - https://www.trufflesuite.com
