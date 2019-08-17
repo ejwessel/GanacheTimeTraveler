@@ -46,24 +46,26 @@ advances the block forward.
 ```javascript
 helper.advanceBlock()
 ```
+### advance block and set time
+combination of both `advanceTime` and `advanceBlock`
+```javascript
+helper.advanceBlockAndSetTime(<new_time>)
+```
 ### advance time and block
 combination of both `advanceTime` and `advanceBlock`
 ```javascript
 helper.advanceTimeAndBlock(<seconds_to_advance_by>)
 ```
-
 ### take snapshot
 _Snapshot the state of the blockchain at the current block. Takes no parameters. Returns the integer id of the snapshot created._
 ```javascript
 helper.takeSnapshot()
 ```
-
 ### revert to snapshot
 _Revert the state of the blockchain to a previous snapshot. Takes a single parameter, which is the snapshot id to revert to._
 ```javascript
 helper.revertToSnapShot(<id_to_revert_to>);
 ```
-
 ## Resources
 - https://github.com/trufflesuite/ganache-cli
 - https://www.trufflesuite.com
