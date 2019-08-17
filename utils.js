@@ -25,9 +25,7 @@ advanceBlock = () => {
       id: new Date().getTime()
     }, (err, result) => {
       if (err) { return reject(err) }
-      const newBlockHash = web3.eth.getBlock('latest').hash
-
-      return resolve(newBlockHash)
+      return resolve(result)
     })
   })
 }
@@ -41,9 +39,7 @@ advanceBlockAndSetTime = (time) => {
             id: new Date().getTime()
         }, (err, result) => {
             if (err) { return reject(err) }
-            const newBlockHash = web3.eth.getBlock('latest').hash
-    
-            return resolve(newBlockHash)
+            return resolve(result)
         })
     })
 }
@@ -58,10 +54,9 @@ advanceTimeAndBlock = async (time) => {
         method: 'evm_mine',
         params: [forwardTime],
         id: new Date().getTime()
-    }, (err) => {
+    }, (err, result) => {
         if (err) { return err }
-        const newBlockHash = web3.eth.getBlock('latest').hash
-        return newBlockHash
+        return result
     })
 }
 
