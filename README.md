@@ -1,4 +1,5 @@
-<image src="https://raw.githubusercontent.com/ejwessel/GanacheTimeTraveler/master/blackhole.png" width=150px height=150px>
+<img width="20%" height="20%" src="https://raw.githubusercontent.com/ejwessel/GanacheTimeTraveler/master/blackhole.png">
+
  
 # ganache-time-traveler
 A testing toolset that allows developers to write unit tests for the Ethereum blockchain.
