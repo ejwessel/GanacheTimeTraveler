@@ -60,3 +60,4 @@ Revert the state of the blockchain to a previous snapshot. Takes a single parame
 ## Resources
 - https://github.com/trufflesuite/ganache-cli
 - https://www.trufflesuite.com
+- [Icon created by Focus Lab from Noun Project](https://thenounproject.com/search/?q=space%20and%20time&i=547869)
