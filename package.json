@@ -1,7 +1,7 @@
 {
   "name": "ganache-time-traveler",
-  "version": "1.0.13",
-  "description": "A testing toolset that allows developers to write unit tests for the Ethereum blockchain.",
+  "version": "1.0.14",
+  "description": "A ganache utility that simplifies writing time dependent or stateless tests on a local Ethereum blockchain.",
   "main": "utils.js",
   "scripts": {
     "test": "truffle test",
