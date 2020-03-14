@@ -40,26 +40,6 @@ afterEach(async() => {
 });
  ```
 
-## Breakdown of methods
-### `advanceTime(<seconds_to_advance_by>)`
-Advances the time on the blockchain forward. Takes a single parameter, which is the number of seconds to advance by.
-Note: for advancetime() to take effect, the block must also be mined using `advanceBlock()`. See `advanceTimeAndBlock()` to do both.
-
-### `advanceBlock()`
-Mines a new block; advances the block forward by 1 block.
-
-### `advanceBlockAndSetTime(<new_time>)`
-Advances the block forward by 1 and **sets** the time to a new time.
-
-### `advanceTimeAndBlock(<seconds_to_advance_by>)`
-Advances the block by 1 in addition to advancing the time on the blockchain forward. Takes a single parameter, which is the number of seconds to advance by.
-
-### `takeSnapshot()`
-Snapshot the state of the blockchain at the current block. Takes no parameters. Returns the integer id of the snapshot created.
-
-### `revertToSnapshot(<id_to_revert_to>)`
-Revert the state of the blockchain to a previous snapshot. Takes a single parameter, which is the snapshot id to revert to.
-
 ## Resources
 - https://github.com/trufflesuite/ganache-cli
 - https://www.trufflesuite.com
