@@ -30,17 +30,25 @@ const timeMachine = require('ganache-time-traveler');
 
 add the `beforeEach` and `afterEach` hooks into your test file
  ```javascript
-beforeEach(async() => {
-    let snapShot = await timeMachine.takeSnapshot();
-    snapshotId = snapShot['result'];
-});
+contract('Test', async (accounts) =>  {
+    beforeEach(async() => {
+        snapShot = await timeMachine.takeSnapshot();
+        snapshotId = snapShot['result'];
+    };
 
-afterEach(async() => {
-    await timeMachine.revertToSnapshot(snapshotId);
-});
+    afterEach(async() => {
+        await timeMachine.revertToSnapShot(snapshotId);
+    });
+
+    before('Deploy Contracts', async() => {
+        /* DEPLOY CONTRACTS HERE */
+    });
+
+    /* ADD TESTS HERE */
+})
  ```
 
-## Breakdown of methods
+## Methods
 ### `advanceTime(<seconds_to_advance_by>)`
 Advances the time on the blockchain forward. Takes a single parameter, which is the number of seconds to advance by.
 Note: for advancetime() to take effect, the block must also be mined using `advanceBlock()`. See `advanceTimeAndBlock()` to do both.
