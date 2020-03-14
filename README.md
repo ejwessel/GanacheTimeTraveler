@@ -4,11 +4,11 @@
 # ganache-time-traveler
 A testing toolset that allows developers to write unit tests for the Ethereum blockchain.
 
-[Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
+- [Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
 
-[Watch my Presentation](https://youtu.be/jjXZIJBsmo4)
+- [Watch my Presentation](https://youtu.be/jjXZIJBsmo4)
 
-[Time Contract Example](https://github.com/ejwessel/TimeContract)
+- [Time Contract Example](https://github.com/ejwessel/TimeContract)
 
 
 NOTE:
