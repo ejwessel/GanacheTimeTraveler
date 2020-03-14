@@ -32,12 +32,12 @@ add the `beforeEach` and `afterEach` hooks into your test file
  ```javascript
 contract('Test', async (accounts) =>  {
     beforeEach(async() => {
-        snapShot = await timeMachine.takeSnapshot();
-        snapshotId = snapShot['result'];
+        let snapshot = await helper.takeSnapshot();
+        snapshotId = snapshot['result'];
     };
 
     afterEach(async() => {
-        await timeMachine.revertToSnapShot(snapshotId);
+        await helper.revertToSnapshot(snapshotId);
     });
 
     before('Deploy Contracts', async() => {
