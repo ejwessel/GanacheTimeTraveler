@@ -23,7 +23,7 @@ NOTE:
 - `npm i ganache-time-traveler`
 
 ## Usage
-add `require` at the top of your tests
+The general outline is to add `require` at the top of your tests
 ```javascript
 const timeMachine = require('ganache-time-traveler');
 ```
@@ -31,6 +31,9 @@ const timeMachine = require('ganache-time-traveler');
 add the `beforeEach` and `afterEach` hooks into your truffle test file
  ```javascript
 contract('Test', async (accounts) =>  {
+
+    let exampleContract;
+
     beforeEach(async() => {
         let snapshot = await timeMachine.takeSnapshot();
         snapshotId = snapshot['result'];
@@ -42,6 +45,7 @@ contract('Test', async (accounts) =>  {
 
     before('Deploy Contracts', async() => {
         /* DEPLOY CONTRACTS HERE */
+        exampleContract = await ExampleContract.new()
     });
 
     /* ADD TESTS HERE */
