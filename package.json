@@ -1,6 +1,6 @@
 {
   "name": "ganache-time-traveler",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A testing toolset that allows developers to write unit tests for the Ethereum blockchain.",
   "main": "utils.js",
   "scripts": {
