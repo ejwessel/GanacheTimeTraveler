@@ -28,7 +28,7 @@ add `require` at the top of your tests
 const timeMachine = require('ganache-time-traveler');
 ```
 
-add the `beforeEach` and `afterEach` hooks into your test file
+add the `beforeEach` and `afterEach` hooks into your truffle test file
  ```javascript
 contract('Test', async (accounts) =>  {
     beforeEach(async() => {
