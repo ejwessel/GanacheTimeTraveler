@@ -25,18 +25,18 @@ NOTE:
 ## Usage
 add `require` at the top of your tests
 ```javascript
-const helper = require('ganache-time-traveler');
+const timeMachine = require('ganache-time-traveler');
 ```
 
 add the `beforeEach` and `afterEach` hooks into your test file
  ```javascript
 beforeEach(async() => {
-    let snapShot = await helper.takeSnapshot();
+    let snapShot = await timeMachine.takeSnapshot();
     snapshotId = snapShot['result'];
 });
 
 afterEach(async() => {
-    await helper.revertToSnapshot(snapshotId);
+    await timeMachine.revertToSnapshot(snapshotId);
 });
  ```
 
