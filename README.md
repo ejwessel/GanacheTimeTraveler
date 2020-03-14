@@ -2,13 +2,13 @@
 
  
 # ganache-time-traveler
-A testing toolset that allows developers to write unit tests for the Ethereum blockchain.
+A ganache utility that simplifies writing time dependent or stateless tests on a local Ethereum blockchain.
 
-[Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
+- [Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
 
-[Watch my Presentation](https://photos.app.goo.gl/6qkd5AN2BthxkY2K6)
+- [Watch my Presentation](https://photos.app.goo.gl/6qkd5AN2BthxkY2K6)
 
-[Time Contract Example](https://github.com/ejwessel/TimeContract)
+- [Time Contract Example](https://github.com/ejwessel/TimeContract)
 
 
 NOTE:
@@ -23,24 +23,40 @@ NOTE:
 - `npm i ganache-time-traveler`
 
 ## Usage
-add `require` at the top of your tests
+The general outline is to add `require` at the top of your tests
 ```javascript
-const helper = require('ganache-time-traveler');
+const timeMachine = require('ganache-time-traveler');
 ```
 
-add the `beforeEach` and `afterEach` hooks into your test file
+add the `beforeEach` and `afterEach` hooks into your truffle test file
  ```javascript
-beforeEach(async() => {
-    let snapShot = await helper.takeSnapshot();
-    snapshotId = snapShot['result'];
-});
+contract('Test', async (accounts) =>  {
 
-afterEach(async() => {
-    await helper.revertToSnapshot(snapshotId);
-});
+    let exampleContract;
+
+    beforeEach(async() => {
+        let snapshot = await timeMachine.takeSnapshot();
+        snapshotId = snapshot['result'];
+    };
+
+    afterEach(async() => {
+        await timeMachine.revertToSnapshot(snapshotId);
+    });
+
+    before('Deploy Contracts', async() => {
+        /* DEPLOY CONTRACTS HERE */
+        exampleContract = await ExampleContract.new()
+    });
+
+    /* ADD TESTS HERE */
+
+    it('Time Dependent Test', async () => {
+        await timeMachine.advanceTimeAndBlock(/* SECONDS TO ADVANCE BY */);
+    })
+})
  ```
 
-## Breakdown of methods
+## Methods
 ### `advanceTime(<seconds_to_advance_by>)`
 Advances the time on the blockchain forward. Takes a single parameter, which is the number of seconds to advance by.
 Note: for advancetime() to take effect, the block must also be mined using `advanceBlock()`. See `advanceTimeAndBlock()` to do both.
