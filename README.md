@@ -6,7 +6,7 @@ A testing toolset that allows developers to write unit tests for the Ethereum bl
 
 - [Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
 
-- [Watch my Presentation](https://youtu.be/jjXZIJBsmo4)
+- [Watch my Presentation](https://photos.app.goo.gl/6qkd5AN2BthxkY2K6)
 
 - [Time Contract Example](https://github.com/ejwessel/TimeContract)
 
