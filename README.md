@@ -32,12 +32,12 @@ add the `beforeEach` and `afterEach` hooks into your truffle test file
  ```javascript
 contract('Test', async (accounts) =>  {
     beforeEach(async() => {
-        let snapshot = await helper.takeSnapshot();
+        let snapshot = await timeMachine.takeSnapshot();
         snapshotId = snapshot['result'];
     };
 
     afterEach(async() => {
-        await helper.revertToSnapshot(snapshotId);
+        await timeMachine.revertToSnapshot(snapshotId);
     });
 
     before('Deploy Contracts', async() => {
@@ -45,6 +45,10 @@ contract('Test', async (accounts) =>  {
     });
 
     /* ADD TESTS HERE */
+
+    it('Time Dependent Test', async () => {
+        await timeMachine.advanceTimeAndBlock(/* SECONDS TO ADVANCE BY */);
+    })
 })
  ```
 
