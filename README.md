@@ -45,15 +45,15 @@ contract('Test', async (accounts) =>  {
 
     before('Deploy Contracts', async() => {
         /* DEPLOY CONTRACTS HERE */
-        exampleContract = await ExampleContract.new()
+        exampleContract = await ExampleContract.new();
     });
 
     /* ADD TESTS HERE */
 
     it('Time Dependent Test', async () => {
         await timeMachine.advanceTimeAndBlock(/* SECONDS TO ADVANCE BY */);
-    })
-})
+    });
+});
  ```
 
 ## Methods
