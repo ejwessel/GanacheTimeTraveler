@@ -2,7 +2,7 @@
 
  
 # ganache-time-traveler
-A testing toolset that allows developers to write unit tests for the Ethereum blockchain.
+A ganache utility that simplifies writing time dependent or stateless tests on a local Ethereum blockchain.
 
 - [Read my Medium Post](https://medium.com/fluidity/standing-the-time-of-test-b906fcc374a9)
 
