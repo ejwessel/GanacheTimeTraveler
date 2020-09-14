@@ -37,7 +37,7 @@ contract('Test', async (accounts) =>  {
     beforeEach(async() => {
         let snapshot = await timeMachine.takeSnapshot();
         snapshotId = snapshot['result'];
-    };
+    });
 
     afterEach(async() => {
         await timeMachine.revertToSnapshot(snapshotId);
