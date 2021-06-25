@@ -1,8 +1,9 @@
 {
   "name": "ganache-time-traveler",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "A ganache utility that simplifies writing time dependent or stateless tests on a local Ethereum blockchain.",
   "main": "utils.js",
+  "typings": "./utils.d.ts",
   "scripts": {
     "test": "truffle test",
     "ganache": "ganache-cli -d"
@@ -22,10 +23,10 @@
     "truffle": "5.0.28"
   },
   "keywords": [
-      "ethereum",
-      "solidity",
-      "testing",
-      "truffle",
-      "ganache"
+    "ethereum",
+    "solidity",
+    "testing",
+    "truffle",
+    "ganache"
   ]
 }
