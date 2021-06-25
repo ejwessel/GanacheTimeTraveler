@@ -12,6 +12,6 @@ declare module "ganache-time-traveler" {
     export function advanceBlockAndSetTime(time: number): Promise<JsonRpcResponse>;
     export function advanceTimeAndBlock(time: number): Promise<JsonRpcResponse>;
     export function takeSnapshot(): Promise<JsonRpcResponse>;
-    export function revertToSnapshot(id: JsonRpcResponse): Promise<JsonRpcResponse>;
+    export function revertToSnapshot(id: string): Promise<JsonRpcResponse>;
     
 }
