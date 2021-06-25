@@ -10,6 +10,7 @@ declare module "ganache-time-traveler" {
     /**
      * Jump forward in time.
      * @param time The amount of time to increase in seconds.
+     * @returns Response 'result' will be the total time adjustment, in seconds.
      */    
     export function advanceTime(time: number): Promise<JsonRpcResponse>;
 
@@ -32,12 +33,14 @@ declare module "ganache-time-traveler" {
 
     /**
      * Snapshot the state of the blockchain at the current block.
+     * @returns Response 'result' will be the integer id of the snapshot created.
      */
     export function takeSnapshot(): Promise<JsonRpcResponse>;
 
     /**
      * Revert the state of the blockchain to a previous snapshot. 
-     * @param id Snapt id to revert to. This will be the 'result' property from takeSnapshot().
+     * @param id Snapt id to revert to. This will be the 'result' property from takeSnapshot().     * 
+     * @returns Response 'result' will be 'true'.
      */
     export function revertToSnapshot(id: string): Promise<JsonRpcResponse>;
     
